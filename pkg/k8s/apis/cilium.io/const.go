@@ -57,6 +57,8 @@ const (
 	// specify the POD name.
 	PodNameLabel = "io.kubernetes.pod.name"
 
+	K8seNodeName = "io.kubernetes.pod.k8se.nodename"
+
 	// AppKubernetes is the label which is recommended by the official k8s
 	// documentation add the label for every resource object.
 	AppKubernetes = "app.kubernetes.io"

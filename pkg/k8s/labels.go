@@ -108,6 +108,10 @@ func GetPodMetadata(k8sNs *slim_corev1.Namespace, pod *slim_corev1.Pod) (contain
 		delete(k8sLabels, k8sConst.PolicyLabelServiceAccount)
 	}
 
+	if pod.Spec.NodeName != "" {
+		k8sLabels[k8sConst.K8seNodeName] = pod.Spec.NodeName
+	}
+
 	// If the pod has been injected with an Istio sidecar proxy compatible with
 	// Cilium, add a label to notify that.
 	// If the pod already contains that label to explicitly enable or disable
