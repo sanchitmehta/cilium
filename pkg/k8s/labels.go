@@ -108,8 +108,9 @@ func GetPodMetadata(k8sNs *slim_corev1.Namespace, pod *slim_corev1.Pod) (contain
 		delete(k8sLabels, k8sConst.PolicyLabelServiceAccount)
 	}
 
+	// K8s scheduler adds NodeName to spec after scheduling the pod
 	if pod.Spec.NodeName != "" {
-		k8sLabels[k8sConst.K8seNodeName] = pod.Spec.NodeName
+		k8sLabels[k8sConst.PodNodeNameLabel] = pod.Spec.NodeName
 	}
 
 	// If the pod has been injected with an Istio sidecar proxy compatible with
